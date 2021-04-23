@@ -55,15 +55,16 @@ module.exports = {
       "daily-hours": req.body["daily-hours"],
     }
 
-    Job.update(updatedJob);
+    await Job.update(updatedJob);
 
     res.redirect('/job/' + jobId);
   },
 
-  delete(req, res) {
+  async delete(req, res) {
     const jobId = req.params.id;
 
-    Job.delete(jobId);
+    await Job.delete(jobId);
+
     return res.redirect('/');
   }
 }
